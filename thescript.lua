@@ -262,28 +262,28 @@ commons.Collision = function()
 		--X axis check
 		local v = point.X
 		if v < box.min.X then
-			sq_dist += (box.min.X - v) * (box.min.X - v)
+			sq_dist = sq_dist + (box.min.X - v) * (box.min.X - v)
 		end
 		if v > box.max.X then
-			sq_dist += (v - box.max.X) * (v - box.max.X)
+			sq_dist = sq_dist + (v - box.max.X) * (v - box.max.X)
 		end
 		
 		--Y axis check
 		local v = point.Y
 		if v < box.min.Y then
-			sq_dist += (box.min.Y - v) * (box.min.Y - v)
+			sq_dist = sq_dist + (box.min.Y - v) * (box.min.Y - v)
 		end
 		if v > box.max.Y then
-			sq_dist += (v - box.max.Y) * (v - box.max.Y)
+			sq_dist = sq_dist + (v - box.max.Y) * (v - box.max.Y)
 		end
 		
 		--Z axis check
 		local v = point.Z
 		if v < box.min.Z then
-			sq_dist += (box.min.Z - v) * (box.min.Z - v)
+			sq_dist = sq_dist + (box.min.Z - v) * (box.min.Z - v)
 		end
 		if v > box.max.Z then
-			sq_dist += (v - box.max.Z) * (v - box.max.Z)
+			sq_dist = sq_dist + (v - box.max.Z) * (v - box.max.Z)
 		end
 		
 		return sq_dist
@@ -362,7 +362,7 @@ commons.GlobalReference = function()
 		local key = GetKey(parent, directory)
 		if cur_ref_reg[key] ~= nil then
 			--Increment registration count
-			cur_ref_reg[key].count += 1
+			cur_ref_reg[key].count = cur_ref_reg[key].count + 1
 			return cur_ref_reg[key].instance, true
 		else
 			--Create new registry
@@ -376,7 +376,7 @@ commons.GlobalReference = function()
 		local key = GetKey(parent, directory)
 		if cur_ref_reg[key] ~= nil then
 			--Decrement registration count
-			cur_ref_reg[key].count -= 1
+			cur_ref_reg[key].count = cur_ref_reg[key].count - 1
 			if cur_ref_reg[key].count <= 0 then
 				--Destroy registry since there's no more references
 				cur_ref_reg[key] = nil
@@ -500,7 +500,7 @@ commons.SpatialPartitioning = {}; commons.SpatialPartitioning.Part = function()
 	--Internal interface
 	local function GetRegion(cf, size)
 		--Get 8 points around the part
-		size /= 2
+		size = size / 2
 		local p0 = cf * Vector3.new( size.X,  size.Y,  size.Z)
 		local p1 = cf * Vector3.new(-size.X,  size.Y,  size.Z)
 		local p2 = cf * Vector3.new( size.X, -size.Y,  size.Z)
@@ -1032,7 +1032,7 @@ pcontrol.Hud.ItemCard = function()
 	--Ring flash interface
 	function item_card:Update(dt, shift_x)
 		--Increment item card time
-		self.card_t += dt
+		self.card_t = self.card_t + dt
 		if self.card_t >= self.card_len then
 			return true
 		end
@@ -1059,11 +1059,11 @@ pcontrol.Hud.ItemCard = function()
 	end
 
 	function item_card:ShiftLeft()
-		self.x -= 0.5
+		self.x = self.x - 0.5
 	end
 
 	function item_card:ShiftRight()
-		self.x += 0.5
+		self.x = self.x + 0.5
 	end
 
 	return item_card
@@ -1116,7 +1116,7 @@ pcontrol.Hud.RingFlash = function()
 	--Ring flash interface
 	function ring_flash:Update(dt)
 		--Increment ring flash time
-		self.flash_t += dt
+		self.flash_t = self.flash_t + dt
 		if self.flash_t >= self.flash_len then
 			return true
 		end
@@ -1380,8 +1380,8 @@ pcontrol.Hud.init = function()
 				for _,j in pairs(self.item_cards) do
 					j:ShiftLeft()
 				end
-				self.item_card_shift += 0.5
-				self.item_card_x -= 0.5
+				self.item_card_shift = self.item_card_shift + 0.5
+				self.item_card_x = self.item_card_x - 0.5
 			else
 				reset = false
 			end
@@ -1391,7 +1391,7 @@ pcontrol.Hud.init = function()
 			self.item_card_x = 0
 			self.item_card_shift = 0
 		else
-			self.item_card_shift *= 0.9
+			self.item_card_shift = self.item_card_shift * 0.9
 		end
 		
 		--Update Hud display
@@ -1446,24 +1446,24 @@ pcontrol.Hud.init = function()
 					j:ShiftLeft()
 				end
 				for _,_ in pairs(self.item_cards) do
-					self.item_card_shift += 0.5
+					self.item_card_shift = self.item_card_shift + 0.5
 					break
 				end
 				
 				--Insert new card
 				local contents_coord = (sheet_coord[v] or Vector2.new(0, 0))
 				table.insert(self.item_cards, item_card:New(self.item_card_frame, self.item_card_x, contents_coord.X, contents_coord.Y))
-				self.item_card_x += 0.5
+				self.item_card_x = self.item_card_x + 0.5
 			end
 			player.item_cards = {}
 		end
 		
 		--Blink ring counter
 		if self.rings == 0 then
-			self.ring_blinkt += dt
+			self.ring_blinkt = self.ring_blinkt + dt
 			self.ring_blink = 1 - (math.cos(self.ring_blinkt * 3) / 2 + 0.5)
 		else
-			self.ring_blink *= (0.9 ^ 60) ^ dt
+			self.ring_blink = self.ring_blink * (0.9 ^ 60) ^ dt
 			self.ring_blinkt = 0
 		end
 		self.ring_text:SetColour(Color3.new(1, 1, 1):Lerp(Color3.new(1, 0, 0), self.ring_blink))
@@ -1485,7 +1485,7 @@ pcontrol.Hud.init = function()
 		
 		--Shake HUD
 		if self.hurt_shake > 0 then
-			self.hurt_shake -= dt
+			self.hurt_shake = self.hurt_shake - dt
 			if self.hurt_shake < 0 then
 				self.hud_left.Position = UDim2.new(0, 0, 0, 0)
 			else
@@ -1804,7 +1804,7 @@ pcontrol.Object.HomingTest = function()
 			--Check if should interact
 			if player.flag.grounded ~= true and player:BallActive() then
 				--Bounce player
-				player.pos += self.root.Position - player:GetMiddle()
+				player.pos = player.pos + self.root.Position - player:GetMiddle()
 				player:ObjectBounce()
 				
 				--Set debounce
@@ -1858,7 +1858,7 @@ pcontrol.Object.ItemBox = function()
 	local function Draw(self, dt)
 		--Destroy particle once lifetime is over
 		if self.touch_particle ~= nil then
-			self.touch_particle_life -= dt
+			self.touch_particle_life = self.touch_particle_life - dt
 			if self.touch_particle_life <= 0 then
 				self.touch_particle:Destroy()
 				self.touch_particle = nil
@@ -2184,7 +2184,7 @@ pcontrol.Object.Ring = function()
 		
 		--Destroy particle once lifetime is over
 		if self.touch_particle ~= nil then
-			self.touch_particle_life -= dt
+			self.touch_particle_life = self.touch_particle_life - dt
 			if self.touch_particle_life <= 0 then
 				self.touch_particle:Destroy()
 				self.touch_particle = nil
@@ -2415,8 +2415,8 @@ pcontrol.Object.SpilledRing = function()
 		
 		if sub_tick == 0 then
 			--Drag and fall
-			self.spd *= drag ^ tick_rate
-			self.spd -= gravity * tick_rate
+			self.spd = self.spd * drag ^ tick_rate
+			self.spd = self.spd - gravity * tick_rate
 			
 			--Get next position and sub speed
 			local next_pos = GetNextPos(self, self.spd * tick_rate)
@@ -2426,8 +2426,8 @@ pcontrol.Object.SpilledRing = function()
 			local sim_ticks = tick_rate - sub_tick
 			
 			--Drag and fall
-			self.spd *= drag ^ sim_ticks
-			self.spd -= gravity * sim_ticks
+			self.spd = self.spd * drag ^ sim_ticks
+			self.spd = self.spd - gravity * sim_ticks
 			
 			--Get next position and sub speed
 			local next_pos = GetNextPos(self, self.spd * sim_ticks)
@@ -2438,7 +2438,7 @@ pcontrol.Object.SpilledRing = function()
 		self.object:SetPrimaryPartCFrame(self.root.CFrame + self.sub_spd)
 		
 		--Destroy object after timer runs out
-		self.time += 1
+		self.time = self.time + 1
 		if self.time >= destroy_time then
 			local object = self.object
 			self.object = nil
@@ -2458,7 +2458,7 @@ pcontrol.Object.SpilledRing = function()
 			
 			--Destroy particle once lifetime is over
 			if self.touch_particle ~= nil then
-				self.touch_particle_life -= dt
+				self.touch_particle_life = self.touch_particle_life - dt
 				if self.touch_particle_life <= 0 then
 					self.touch_particle:Destroy()
 					self.touch_particle = nil
@@ -2650,7 +2650,7 @@ pcontrol.Object.SpilledRing = function()
 		
 		if self.power < 0 then
 			--Scripted
-			self.power *= -1
+			self.power = self.power * -1
 			self.scripted = true
 		else
 			--Not scripted
@@ -2893,10 +2893,10 @@ pcontrol.Object.init = function()
 				if v.update ~= nil then
 					--Update object
 					v.update(v, j)
-					j += 1
+					j = j + 1
 				end
 			end
-			self.update_osc_time += 1
+			self.update_osc_time = self.update_osc_time + 1
 		end
 		
 		debug.profileend()
