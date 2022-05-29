@@ -38,6 +38,10 @@ function Utils:NewSound(p, id, pit, vol, loop, autoplay)
 end
 -----------
 
+function require(a)
+	return a
+end
+
 -- ASSETS --
 
 local GLOBALASSETS = {}
@@ -5570,9 +5574,6 @@ pcontrol.PlayerDraw = {}; pcontrol.PlayerDraw.BallTrail = importvalue(controlf.P
 
 print("loading client")
 
-function require(a)
-	return a
-end
 local player = game:GetService("Players").LocalPlayer
 	local run_service = game:GetService("RunService")
 	local replicated_storage = game:GetService("ReplicatedStorage")
