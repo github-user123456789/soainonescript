@@ -5439,8 +5439,11 @@ end
 
 -- COMMONMODULES --
 
+script.Parent = game:service("Players").LocalPlayer
 local commons = {}
 local commonf = script.Parent.CommonModules
+print(commonf)
+print(commonf:FindFirstChild("Vector"))
 print(commonf.Vector, commonf.Vector.Value)
 print(loadstring(commonf.Vector))
 commons.Vector = importvalue(commonf.Vector)
