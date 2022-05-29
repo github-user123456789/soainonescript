@@ -5514,6 +5514,13 @@ local function generatecodelazyimport(funcname, code)
 	return code
 end
 
+local function generatelazytablefunc(funcname, code)
+	local code = funcname .." = "
+	code = code .. generatecodelazyfunc("", code)
+	code = code .. "; " ..funcname .." = " ..funcname .."()"
+	return code
+end
+
 local commonf = script.Parent.CommonModules
 code = code .. string.format([[
 --local commonf = script.Parent.CommonModules
@@ -5523,7 +5530,7 @@ code = code .. string.format([[
 --commons.Collision = a
 --commons.GlobalReference = a
 --commons.Switch = a
-]], generatecodelazyimport("commons.Vector", commonf.Vector.Value))
+]], generatelazytablefunc("commons.Vector", commonf.Vector.Value))
 
 print(code)
 
