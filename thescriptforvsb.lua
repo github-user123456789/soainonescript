@@ -5436,7 +5436,7 @@ local function importvalue(v)
 	print(typeof(loadstring(v.Value)))
 	if typeof(loadstring(v.Value)) == "string" then
 		print("it was a string.")
-		print(loadstring(v.Value):sub(15))
+		print(loadstring(v.Value):sub(40))
 		print("now it is subbed.")
 	end
 	return loadstring(v.Value)()
