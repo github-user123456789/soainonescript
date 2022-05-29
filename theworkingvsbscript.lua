@@ -5517,12 +5517,12 @@ end
 local commonf = script.Parent.CommonModules
 code = code .. string.format([[
 --local commonf = script.Parent.CommonModules
--commons.Vector = %s
---commons.CFrame = %s
---commons.CameraUtil = %s
---commons.Collision = %s
---commons.GlobalReference = %s
---commons.Switch = %s
+--commons.Vector = %s
+--commons.CFrame = a
+--commons.CameraUtil = a
+--commons.Collision = a
+--commons.GlobalReference = a
+--commons.Switch = a
 ]], generatecodelazyimport("commons.Vector", commonf.Vector.Value))
 
 print(code)
