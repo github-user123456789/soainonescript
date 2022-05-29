@@ -5600,6 +5600,8 @@ local player = game:GetService("Players").LocalPlayer
 	local music_class = require(pcontrol.Music.init)
 	local player_replicate_class = require(pcontrol.PlayerReplicate.init)
 
+	print(typeof(pcontrol.PlayerReplicate.init))
+	
 	--Game objects
 	local player_object = nil
 	local object_instance = nil
