@@ -5439,7 +5439,7 @@ local function importvalue(v)
 		print(loadstring(v.Value):sub(40))
 		print("now it is subbed.")
 	end
-	return loadstring(v.Value)()
+	return loadstring(v.Value)
 end
 
 ---------------------------------------------------------------------
