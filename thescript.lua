@@ -6518,7 +6518,7 @@ pcontrol.PlayerDraw.Invincibility = function()
 
 	function draw_invincibility:Draw(dt, hrp_cf)
 		if not self.enabled then
-			self.en_time -= dt
+			self.en_time = self.en_time - dt
 		end
 		if self.en_time > 0 and hrp_cf ~= self.hrp_cf then
 			--Set invincibility CFrame
@@ -6529,7 +6529,7 @@ pcontrol.PlayerDraw.Invincibility = function()
 
 	function draw_invincibility:LazyDraw(dt, hrp_cf)
 		if not self.enabled then
-			self.en_time -= dt
+			self.en_time = self.en_time - dt
 		end
 		if self.en_time > 0 and hrp_cf ~= self.hrp_cf then
 			--Set invincibility CFrame
@@ -6592,7 +6592,7 @@ pcontrol.PlayerDraw.JumpBall = function()
 			self.jump_ball_smear.Transparency = 1 - smear
 			
 			--Set jump ball CFrame
-			self.spin += spin * dt
+			self.spin = self.spin + spin * dt
 			self.jump_ball:SetPrimaryPartCFrame(hrp_cf * CFrame.Angles(-self.spin, 0, 0))
 			self.hrp_cf = hrp_cf
 		end
@@ -6688,7 +6688,7 @@ pcontrol.PlayerDraw.MagnetShield = function()
 
 	function draw_magnet_shield:Draw(dt, hrp_cf)
 		--Get shield transparencies
-		self.time += dt
+		self.time = self.time + dt
 		
 		local trans1 = GetTransparency(self.time, 0.000)
 		local trans2 = GetTransparency(self.time, 0.333)
@@ -6717,7 +6717,7 @@ pcontrol.PlayerDraw.MagnetShield = function()
 		end
 		
 		--Set shield CFrame
-		self.rot *= CFrame.Angles(dt * 0.16, dt * 0.21, dt * 0.19)
+		self.rot = self.rot * CFrame.Angles(dt * 0.16, dt * 0.21, dt * 0.19)
 		self.shield:SetPrimaryPartCFrame(CFrame.new(hrp_cf.p) * self.rot)
 	end
 
@@ -6806,7 +6806,7 @@ pcontrol.PlayerDraw.Shield = function()
 
 	function draw_shield:Draw(dt, hrp_cf)
 		--Get shield transparencies
-		self.time += dt
+		self.time = self.time + dt
 		
 		local trans1 = GetTransparency(self.time, 0.000)
 		local trans2 = GetTransparency(self.time, 0.333)
@@ -6826,7 +6826,7 @@ pcontrol.PlayerDraw.Shield = function()
 		end
 		
 		--Set shield CFrame
-		self.rot *= CFrame.Angles(dt * 0.16, dt * 0.21, dt * 0.19)
+		self.rot = self.rot * CFrame.Angles(dt * 0.16, dt * 0.21, dt * 0.19)
 		self.shield:SetPrimaryPartCFrame(CFrame.new(hrp_cf.p) * self.rot)
 		self.hrp_cf = hrp_cf
 	end
@@ -6892,7 +6892,7 @@ pcontrol.PlayerDraw.SpindashBall = function()
 
 	function draw_spindash_ball:Draw(dt, hrp_cf, spin)
 		--Change shown spindash ball frame
-		self.spin += spin * dt
+		self.spin = self.spin + spin * dt
 		
 		local frame = 1 + math.floor(((self.spin / (math.pi * 2)) % 1) * 5)
 		if frame ~= self.frame then
@@ -9153,7 +9153,7 @@ pcontrol.PlayerReplicate.init = function()
 				--Update state
 				tween = true
 				while self.next_tick <= now do
-					self.next_tick += constants.packet_rate
+					self.next_tick = self.next_tick + constants.packet_rate
 				end
 			else
 				tween = nil
@@ -9352,7 +9352,7 @@ pcontrol.init = {}; pcontrol.init.client = function()
 		local now = tick()
 		
 		--Framerate count 
-		fps_count += 1
+		fps_count = fps_count + 1
 		
 		--Update game
 		local framerate = 1 / constants.framerate
@@ -9368,7 +9368,7 @@ pcontrol.init = {}; pcontrol.init.client = function()
 		
 		while now >= next_tick do
 			--Tickrate count
-			tps_count += 1
+			tps_count = fps_count + 1
 			
 			--Update player
 			if player_object ~= nil then
@@ -9390,7 +9390,7 @@ pcontrol.init = {}; pcontrol.init.client = function()
 			end
 			
 			--Increment tickrate counter
-			next_tick += framerate
+			next_tick = next_tick + framerate
 		end
 		
 		--Draw game
