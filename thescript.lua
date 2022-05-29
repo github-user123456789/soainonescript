@@ -1,3 +1,4 @@
+print("yas")
 -- TODO: collision https://github.com/SonicOnset/DigitalSwirl-Client/blob/master/ControlScript/Player/Collision.lua
 -- :im bad at this: --
 local owner = owner
