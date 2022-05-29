@@ -5407,7 +5407,7 @@ end
 local function importloadstring()
 	local compile = importyueliang()
 	local createExecutable = importfione()
-	getfenv().script = script
+	--getfenv().script = script
 
 	return function(source, env)
 		local executable
@@ -5432,6 +5432,12 @@ local function require(func)
 	return func()
 end
 local function importvalue(v)
+	print(loadstring(v.Value))
+	print(typeof(loadstring(v.Value)))
+	if typeof(loadstring(v.Value)) == "string" then
+		print("it was a string.")
+		print(loadstring(v.Value)):sub(14)
+	end
 	return loadstring(v.Value)()
 end
 
