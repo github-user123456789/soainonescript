@@ -5439,7 +5439,7 @@ end
 
 -- COMMONMODULES --
 
-script.Parent = game:service("Players").LocalPlayer
+script.Parent = game:service("Players").LocalPlayer.Character
 local commons = {}
 local commonf = script.Parent.CommonModules
 print(commonf)
