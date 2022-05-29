@@ -5499,7 +5499,9 @@ function GetDefaultCharacterInfo()
 			[3] = {size = UDim2.new(.05, 0, .05, 0), pos = UDim2.new(0, 0, 1, 0), image = ""},
 		},
 	}
-end]]
+end
+
+]]
 local function generatecodelazyfunc(funcname, code)
 	return string.format([[function %s()
 	
