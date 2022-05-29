@@ -5517,7 +5517,7 @@ end
 local commonf = script.Parent.CommonModules
 code = code .. string.format([[
 --local commonf = script.Parent.CommonModules
---commons.Vector = %s
+%s
 --commons.CFrame = a
 --commons.CameraUtil = a
 --commons.Collision = a
