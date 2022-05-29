@@ -5445,3 +5445,22 @@ commons.Vector = importvalue(commonf.Vector)
 commons.CFrame = importvalue(commonf.CFrame)
 commons.CameraUtil = importvalue(commonf.CameraUtil)
 commons.Collision = importvalue(commonf.Collision)
+commons.GlobalReference = importvalue(commonf.GlobalReference)
+commons.Switch = importvalue(commonf.Switch)
+
+commons.PlayerReplicate = {}; commons.PlayerReplicate.Constants = importvalue(commonf.PlayerReplicate.Constants)
+commons.SpatialPartitioning = {}; commons.SpatialPartitioning.Part = importvalue(commonf.SpatialPartitioning.Part)
+								  commons.SpatialPartitioning.init = importvalue(commonf.SpatialPartitioning.init)
+
+-- CONTROLSCRIPT
+
+local pcontrol = {}
+local controlf = script.Parent.ControlScript
+pcontrol.Constants = importvalue(controlf.Constants)
+pcontrol.Music = importvalue(controlf.Music)
+pcontrol.ObjectCommon = importvalue(controlf.ObjectCommon)
+
+pcontrol.Hud = {}; pcontrol.Hud.ItemCard = importvalue(controlf.Hud.ItemCard)
+				   pcontrol.Hud.RingFlash = importvalue(controlf.Hud.RingFlash)
+				   pcontrol.Hud.Text = importvalue(controlf.Hud.Text)
+				   pcontrol.Hud.init = importvalue(controlf.Hud.init)
