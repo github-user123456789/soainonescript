@@ -5515,11 +5515,19 @@ local function generatecodelazyimport(funcname, code)
 	return code
 end
 
+--[[
 local function generatelazytablefunc(funcname, code)
-	print(funcname, code)
-	print("-----------------------")
 	local code = funcname .." = "
 	code = code .. generatecodelazyfunc("", code)
+	code = code .. "; " ..funcname .." = " ..funcname .."()"
+	return code
+end
+]]
+
+local function generatelazytablefunc(funcname, code)
+	local theactualcode = code
+	local code = funcname .." = function()"
+	code = code .. generatecodelazyfunc("", theactualcode)
 	code = code .. "; " ..funcname .." = " ..funcname .."()"
 	return code
 end
