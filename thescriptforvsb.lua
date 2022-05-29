@@ -5599,11 +5599,11 @@ local player = game:GetService("Players").LocalPlayer
 	local cur_tps = 0
 
 	--Game classes
-	local player_class = require(pcontrol.Player.init)
-	local object_class = require(pcontrol.Object.init)
-	local hud_class = require(pcontrol.Hud.init)
-	local music_class = require(pcontrol.Music.init)
-	local player_replicate_class = require(pcontrol.PlayerReplicate.init)
+	local player_class = pcontrol.Player.init
+	local object_class = pcontrol.Object.init
+	local hud_class = pcontrol.Hud.init
+	local music_class = pcontrol.Music.init
+	local player_replicate_class = pcontrol.PlayerReplicate.init
 	print(player_replicate_class, typeof(player_replicate_class))
 	
 	--Game objects
