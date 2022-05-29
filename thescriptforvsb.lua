@@ -43,7 +43,8 @@ end
 local GLOBALASSETS = {}
 GLOBALASSETS.Guis = Instance.new("Folder", script)
 GLOBALASSETS.HudGui = Utils:Create({"ScreenGui", GLOBALASSETS.Guis}, {
-	Name = "HudGui"
+	Name = "HudGui",
+	Enabled = false
 }); local HudGui = GLOBALASSETS.HudGui
 
 Utils:Create({"Frame", HudGui}, {
