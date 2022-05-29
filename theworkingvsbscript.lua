@@ -5525,7 +5525,7 @@ end
 
 local function generatelazytablefunc(funcname, code)
 	local theactualcode = code
-	local code = funcname .." = function()"
+	local code = funcname .." = "
 	code = code .. generatecodelazyfunc("", theactualcode)
 	code = code .. "; " ..funcname .." = " ..funcname .."()"
 	return code
@@ -5540,24 +5540,39 @@ function commons:WaitForChild(a)
 end
 %s
 %s
---commons.CameraUtil = a
---commons.Collision = a
---commons.GlobalReference = a
---commons.Switch = a
+%s
+%s
+%s
+%s
 ]], generatelazytablefunc("commons.Vector", commonf.Vector.Value),
-	generatelazytablefunc("commons.CFrame", commonf.CFrame.Value))
+	generatelazytablefunc("commons.CFrame", commonf.CFrame.Value),
+	generatelazytablefunc("commons.CameraUtil", commonf.CameraUtil.Value),
+	generatelazytablefunc("commons.Collision", commonf.Collision.Value),
+	generatelazytablefunc("commons.GlobalReference", commonf.GlobalReference.Value),
+	generatelazytablefunc("commons.Switch", commonf.Switch.Value))
 
-print(code)
+code = code .. string.format([[
+commons.PlayerReplicate = {}
+%s
+]], generatelazytablefunc("commons.PlayerReplicate.Constants", commonf.PlayerReplicate.Constants.Value))
+
+code = code .. string.format([[
+commons.SpatialPartitioning = {}
+%s
+]], generatelazytablefunc("commons.SpatialPartitioning.Part", commonf.SpatialPartitioning.Part.Value),
+	generatelazytablefunc("commons.SpatialPartitioning.init", commonf.SpatialPartitioning.init.Value))
 
 loadstring(code ..[==[
+	
+	---------------------------------------------------
 	
 	local function importvalue(a)
 		return a
 	end
 
-	commons.PlayerReplicate = {}; commons.PlayerReplicate.Constants = importvalue(commonf.PlayerReplicate.Constants)
-	commons.SpatialPartitioning = {}; commons.SpatialPartitioning.Part = importvalue(commonf.SpatialPartitioning.Part)
-									  commons.SpatialPartitioning.init = importvalue(commonf.SpatialPartitioning.init)
+	--commons.PlayerReplicate = {}; commons.PlayerReplicate.Constants = importvalue(commonf.PlayerReplicate.Constants)
+	--commons.SpatialPartitioning = {}; commons.SpatialPartitioning.Part = importvalue(commonf.SpatialPartitioning.Part)
+	--								  commons.SpatialPartitioning.init = importvalue(commonf.SpatialPartitioning.init)
 	
 	local player = game:GetService("Players").LocalPlayer
 	local run_service = game:GetService("RunService")
