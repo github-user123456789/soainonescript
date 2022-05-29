@@ -5554,5 +5554,6 @@ pcontrol.init = {}; pcontrol.init.client = importvalue(controlf.init.client)
 
 -- Run
 
+print(controlf.init.client)
 print(pcontrol.init.client)
 pcontrol.init.client()
