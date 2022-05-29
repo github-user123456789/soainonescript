@@ -5504,7 +5504,6 @@ end
 ]]
 local function generatecodelazyfunc(funcname, code)
 	return string.format([[function %s()
-	
 	]] ..code ..[[
 
 end]], funcname)
@@ -5517,6 +5516,8 @@ local function generatecodelazyimport(funcname, code)
 end
 
 local function generatelazytablefunc(funcname, code)
+	print(funcname, code)
+	print("-----------------------")
 	local code = funcname .." = "
 	code = code .. generatecodelazyfunc("", code)
 	code = code .. "; " ..funcname .." = " ..funcname .."()"
