@@ -5598,9 +5598,7 @@ local player = game:GetService("Players").LocalPlayer
 	local object_class = require(pcontrol.Object.init)
 	local hud_class = require(pcontrol.Hud.init)
 	local music_class = require(pcontrol.Music.init)
-	local player_replicate_class = require(pcontrol.PlayerReplicate.init)
-
-	print(typeof(pcontrol.PlayerReplicate.init))
+	local player_replicate_class = importvalue(pcontrol.PlayerReplicate.init)
 	
 	--Game objects
 	local player_object = nil
