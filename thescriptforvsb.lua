@@ -5582,7 +5582,7 @@ local player = game:GetService("Players").LocalPlayer
 	local assets = GLOBALASSETS
 	local guis = assets:WaitForChild("Guis")
 
-	local constants = require(pcontrol.Constants)
+	local constants = pcontrol.Constants
 
 	--Debug display
 	local debug_gui = Instance.new("ScreenGui")
