@@ -67,6 +67,13 @@ Utils:Create({"Frame", HudGui}, {
 	Name = "RingIcon",
 })
 
+function GLOBALASSETS:WaitForChild(a)
+	if GLOBALASSETS[a] then
+		return GLOBALASSETS[a]
+	end
+	return nil
+end
+
 -- VLUA --
 local function importfione()
 	--[[
