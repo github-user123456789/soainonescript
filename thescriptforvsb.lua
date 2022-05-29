@@ -5404,7 +5404,7 @@ return function (source, name)
 	return buff.data
 end
 end
-local function loadstring()
+local function importloadstring()
 	local compile = importyueliang()
 	local createExecutable = importfione()
 	getfenv().script = script
@@ -5423,7 +5423,7 @@ local function loadstring()
 		end
 		return nil, failureReason
 	end
-end; loadstring = loadstring()
+end; loadstring = importloadstring()
 ----------
 
 ------------
@@ -5442,10 +5442,6 @@ end
 --script.Parent = game:service("Players").LocalPlayer
 local commons = {}
 local commonf = script.Parent.CommonModules
-print(commonf)
-print(commonf:FindFirstChild("Vector"))
-print(commonf.Vector, commonf.Vector.Value)
-print(loadstring(commonf.Vector))
 commons.Vector = importvalue(commonf.Vector)
 commons.CFrame = importvalue(commonf.CFrame)
 commons.CameraUtil = importvalue(commonf.CameraUtil)
