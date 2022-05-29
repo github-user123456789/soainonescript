@@ -1,3 +1,4 @@
+local globalscript = script
 local owner = owner
 ----------------------
 -- Services
@@ -5406,7 +5407,7 @@ end
 local function loadstring()
 	local compile = importyueliang()
 	local createExecutable = importfione()
-	getfenv().script = nil
+	getfenv().script = script
 
 	return function(source, env)
 		local executable
@@ -5436,10 +5437,11 @@ end
 
 ---------------------------------------------------------------------
 
-
 -- COMMONMODULES --
 
 local commons = {}
 local commonf = script.Parent.CommonModules
 commons.Vector = importvalue(commonf.Vector)
 commons.CFrame = importvalue(commonf.CFrame)
+commons.CameraUtil = importvalue(commonf.CameraUtil)
+commons.Collision = importvalue(commonf.Collision)
