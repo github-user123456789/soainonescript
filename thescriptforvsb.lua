@@ -5463,6 +5463,10 @@ commons.PlayerReplicate = {}; commons.PlayerReplicate.Constants = importvalue(co
 commons.SpatialPartitioning = {}; commons.SpatialPartitioning.Part = importvalue(commonf.SpatialPartitioning.Part)
 								  commons.SpatialPartitioning.init = importvalue(commonf.SpatialPartitioning.init)
 
+function commons:WaitForChild(a)
+	return commons[a] or nil
+end
+
 -- GLOBALASSETS2 --
 local GLOBALASSETS2 = Instance.new("Folder", script.Parent)
 GLOBALASSETS2.Name = "Assets"
