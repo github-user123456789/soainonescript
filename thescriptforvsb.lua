@@ -5433,7 +5433,7 @@ local function require(func)
 end
 local function importvalue(v)
 	print("Loading: " ..v.Name .." (note: if you are lagging thats normal, its loading alot of vlua)")
-	task.wait(.05)
+	task.wait()
 	return loadstring(v.Value)
 end
 
