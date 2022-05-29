@@ -5441,6 +5441,8 @@ end
 
 local commons = {}
 local commonf = script.Parent.CommonModules
+print(commonf.Vector, commonf.Vector.Value)
+print(loadstring(commonf.Vector))
 commons.Vector = importvalue(commonf.Vector)
 commons.CFrame = importvalue(commonf.CFrame)
 commons.CameraUtil = importvalue(commonf.CameraUtil)
