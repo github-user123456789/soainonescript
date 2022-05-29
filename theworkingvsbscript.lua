@@ -5479,7 +5479,6 @@ local OBJECTS2 = Utils:Create({"Folder", GLOBALASSETS2}, {
 print("loading client")
 
 local code = [[--- literally everything ---
-commons = {}
 function GetDefaultCharacterInfo()
 	--self.p = info.physics
 	--self.assets = info.assets
@@ -5535,13 +5534,18 @@ end
 local commonf = script.Parent.CommonModules
 code = code .. string.format([[
 --local commonf = script.Parent.CommonModules
+local commons = {}
+function commons:WaitForChild(a)
+	return commons[a] or nil
+end
 %s
---commons.CFrame = a
+%s
 --commons.CameraUtil = a
 --commons.Collision = a
 --commons.GlobalReference = a
 --commons.Switch = a
-]], generatelazytablefunc("commons.Vector", commonf.Vector.Value))
+]], generatelazytablefunc("commons.Vector", commonf.Vector.Value),
+	generatelazytablefunc("commons.CFrame", commonf.CFrame.Value))
 
 print(code)
 
