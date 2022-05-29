@@ -5508,21 +5508,22 @@ local function generatecodelazyfunc(funcname, code)
 end]], funcname)
 end
 local function generatecodelazyimport(funcname, code)
-	local code = "local " ..funcname .." = "
-	code = code .. generatecodelazyfunc()
+	local code = funcname .." = "
+	code = code .. generatecodelazyfunc(funcname, code)
 	code = code .. "; " ..funcname .." = " ..funcname .."()"
+	return code
 end
 
 local commonf = script.Parent.CommonModules
 code = code .. string.format([[
 --local commonf = script.Parent.CommonModules
-commons.Vector = %s
-commons.CFrame = %s
-commons.CameraUtil = %s
-commons.Collision = %s
-commons.GlobalReference = %s
-commons.Switch = %s
-]], generatecodelazyimport(commonf.Vector))
+-commons.Vector = %s
+--commons.CFrame = %s
+--commons.CameraUtil = %s
+--commons.Collision = %s
+--commons.GlobalReference = %s
+--commons.Switch = %s
+]], generatecodelazyimport("commons.Vector", commonf.Vector.Value))
 
 print(code)
 
