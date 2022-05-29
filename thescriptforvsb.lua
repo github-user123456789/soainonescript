@@ -5432,6 +5432,8 @@ local function require(func)
 	return func()
 end
 local function importvalue(v)
+	print("Loading: " ..v.Name)
+	task.wait(.2)
 	return loadstring(v.Value)
 end
 
