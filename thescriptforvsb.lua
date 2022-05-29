@@ -5432,7 +5432,7 @@ local function require(func)
 	return func()
 end
 local function importvalue(v)
-	print("Loading: " ..v.Name)
+	print("Loading: " ..v.Name .." (note: if you are lagging thats normal, its loading alot of vlua)")
 	task.wait(.05)
 	return loadstring(v.Value)
 end
@@ -5549,6 +5549,8 @@ pcontrol.PlayerDraw = {}; pcontrol.PlayerDraw.BallTrail = importvalue(controlf.P
 						  pcontrol.PlayerDraw.Shield = importvalue(controlf.PlayerDraw.Shield)
 						  pcontrol.PlayerDraw.SpindashBall = importvalue(controlf.PlayerDraw.SpindashBall)
 						  pcontrol.PlayerDraw.init = importvalue(controlf.PlayerDraw.init)
+
+pcontrol.init = {}; pcontrol.init.client = importvalue(controlf.init.client)
 
 -- Run
 pcontrol.init.client()
