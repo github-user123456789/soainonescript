@@ -5751,7 +5751,9 @@ loadstring(code ..[==[
 	--local set_physics = replicated_storage:WaitForChild("SetPhysics")
 	local set_physics = Instance.new("RemoteEvent")
 
-	local sp_game = nil
+	--local sp_game = nil
+	--local sp_char = nil
+	local sp_game = game
 	local sp_char = nil
 
 	set_physics.OnClientEvent:Connect(function(game, char)
@@ -5818,6 +5820,7 @@ loadstring(code ..[==[
 	hud_instance = hud_class:New(player:WaitForChild("PlayerGui"))
 
 	--Attach character creation and destruction events
+	print("attempting to load physics")
 	if player.Character then
 		CharacterAdded(player.Character)
 	end
