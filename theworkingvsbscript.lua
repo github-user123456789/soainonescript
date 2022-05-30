@@ -5702,6 +5702,12 @@ pcontrol.PlayerDraw = {}
 
 loadstring(code ..[==[
 	
+	function print(a)
+		local hint = Instance.new("Hint", script)
+		hint.Text = tostring(a)
+		game.Debris:AddItem(hint, 5)
+	end
+	
 	print(commons.Vector)
 	
 	---------------------------------------------------
