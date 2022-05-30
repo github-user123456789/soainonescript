@@ -5610,7 +5610,7 @@ pcontrol.Object = {}
 	generatelazytablefunc("pcontrol.Object.init", controlf.Object.init.Value))
 
 print(table.unpack(controlf.Player:children()))
-print(controlf.Animation)
+print(controlf.Player.Animation, typeof(controlf.Player.Animation), controlf.Player.Animation.ClassName)
 
 code = code .. string.format([[
 pcontrol.Player = {}
