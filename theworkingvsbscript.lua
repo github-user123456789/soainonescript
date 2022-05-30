@@ -5521,7 +5521,6 @@ end
 ]]
 
 local function generatelazytablefunc(funcname, code)
-	print(code)
 	local theactualcode = code
 	local code = funcname .." = "
 	code = code .. generatecodelazyfunc("", theactualcode)
@@ -5574,8 +5573,6 @@ local pcontrol = {}
 	generatelazytablefunc("pcontrol.Music", controlf.Music.Value),
 	generatelazytablefunc("pcontrol.ObjectCommon", controlf.ObjectCommon.Value))
 
-print(controlf.Hud)
-print(table.unpack(controlf.Hud:children()))
 code = code .. string.format([[
 pcontrol.Hud = {}
 %s
@@ -5611,6 +5608,9 @@ pcontrol.Object = {}
 	generatelazytablefunc("pcontrol.Object.SpilledRing", controlf.Object.SpilledRing.Value),
 	generatelazytablefunc("pcontrol.Object.Spring", controlf.Object.Spring.Value),
 	generatelazytablefunc("pcontrol.Object.init", controlf.Object.init.Value))
+
+print(table.unpack(controlf.Player:children()))
+print(controlf.Animation)
 
 code = code .. string.format([[
 pcontrol.Player = {}
