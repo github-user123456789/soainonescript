@@ -5574,7 +5574,7 @@ local pcontrol = {}
 	generatelazytablefunc("pcontrol.ObjectCommon", controlf.ObjectCommon.Value))
 
 print(controlf.Hud)
-print(table.unpack(controlf:children()))
+print(table.unpack(controlf.Hud:children()))
 code = code .. string.format([[
 pcontrol.Hud = {}
 %s
