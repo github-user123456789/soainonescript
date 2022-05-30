@@ -5576,7 +5576,101 @@ local pcontrol = {}
 	generatelazytablefunc("pcontrol.Music", controlf.Music.Value),
 	generatelazytablefunc("pcontrol.ObjectCommon", controlf.ObjectCommon.Value))
 
--- TODO hud
+code ..= string.format([[
+pcontrol.Hud = {}
+%s
+%s
+%s
+%s
+]], generatelazytablefunc("pcontrol.Hud.ItemCard", controlf.Hud.ItemCard.Value),
+	generatelazytablefunc("pcontrol.Hud.RingFlash", controlf.Hud.RingFlash.Value),
+	generatelazytablefunc("pcontrol.Hud.Text", controlf.Hud.Text.Value),
+	generatelazytablefunc("pcontrol.Hud.init", controlf.Hud.init.Value))
+
+code ..= string.format([[
+pcontrol.Object = {}
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+]], generatelazytablefunc("pcontrol.Object.DashPanel", controlf.Object.DashPanel.Value),
+	generatelazytablefunc("pcontrol.Object.DashRamp", controlf.Object.DashRamp.Value),
+	generatelazytablefunc("pcontrol.Object.DashRing", controlf.Object.DashRing.Value),
+	generatelazytablefunc("pcontrol.Object.HomingTest", controlf.Object.HomingTest.Value),
+	generatelazytablefunc("pcontrol.Object.ItemBox", controlf.Object.ItemBox.Value),
+	generatelazytablefunc("pcontrol.Object.RainbowRing", controlf.Object.RainbowRing.Value),
+	generatelazytablefunc("pcontrol.Object.Ring", controlf.Object.Ring.Value),
+	generatelazytablefunc("pcontrol.Object.Spiketrap", controlf.Object.Spiketrap.Value),
+	generatelazytablefunc("pcontrol.Object.SpilledRing", controlf.Object.SpilledRing.Value),
+	generatelazytablefunc("pcontrol.Object.Spring", controlf.Object.Spring.Value),
+	generatelazytablefunc("pcontrol.Object.init", controlf.Object.init.Value))
+
+code ..= string.format([[
+pcontrol.Player = {}
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+%s
+]], generatelazytablefunc("pcontrol.Player.Acceleration", controlf.Player.Acceleration.Value),
+	generatelazytablefunc("pcontrol.Player.Animation", controlf.Player.Animation.Value),
+	generatelazytablefunc("pcontrol.Player.Collision", controlf.Player.Collision.Value),
+	generatelazytablefunc("pcontrol.Player.HomingAttack", controlf.Player.HomingAttack.Value),
+	generatelazytablefunc("pcontrol.Player.LSD", controlf.Player.LSD.Value),
+	generatelazytablefunc("pcontrol.Player.Movement", controlf.Player.Movement.Value),
+	generatelazytablefunc("pcontrol.Player.Ragdoll", controlf.Player.Ragdoll.Value),
+	generatelazytablefunc("pcontrol.Player.Rail", controlf.Player.Rail.Value),
+	generatelazytablefunc("pcontrol.Player.Sound", controlf.Player.Sound.Value),
+	generatelazytablefunc("pcontrol.Player.init", controlf.Player.init.Value))
+
+code ..= string.format([[
+pcontrol.Player.Physics = {}
+%s
+%s
+%s
+]], generatelazytablefunc("pcontrol.Player.Physics.SA1", controlf.Player.Physics.SA1.Value),
+	generatelazytablefunc("pcontrol.Player.Physics.SA2", controlf.Player.Physics.SA2.Value),
+	generatelazytablefunc("pcontrol.Player.Physics.SOA", controlf.Player.Physics.SOA.Value))
+
+code ..= string.format([[
+pcontrol.Player.Input = {}
+%s
+%s
+%s
+]], generatelazytablefunc("pcontrol.Player.Input.TouchButton", controlf.Player.Input.TouchButton.Value),
+	generatelazytablefunc("pcontrol.Player.Input.TouchThumbstick", controlf.Player.Input.TouchThumbstick.Value),
+	generatelazytablefunc("pcontrol.Player.Input.init", controlf.Player.Input.init.Value))
+
+code ..= string.format([[
+pcontrol.PlayerReplicate = {}
+%s
+%s
+]], generatelazytablefunc("pcontrol.PlayerReplicate.Peer", controlf.PlayerReplicate.Peer.Value),
+	generatelazytablefunc("pcontrol.PlayerReplicate.init", controlf.PlayerReplicate.init.Value))
+
+code ..= string.format([[
+pcontrol.PlayerDraw = {}
+%s
+%s
+]], generatelazytablefunc("pcontrol.PlayerDraw.BallTrail", controlf.PlayerDraw.Peer.BallTrail),
+	generatelazytablefunc("pcontrol.PlayerDraw.Invincibility", controlf.PlayerDraw.Invincibility.Value),
+	generatelazytablefunc("pcontrol.PlayerDraw.JumpBall", controlf.PlayerDraw.JumpBall.Value),
+	generatelazytablefunc("pcontrol.PlayerDraw.MagnetShield", controlf.PlayerDraw.MagnetShield.Value),
+	generatelazytablefunc("pcontrol.PlayerDraw.Shield", controlf.PlayerDraw.Shield.Value),
+	generatelazytablefunc("pcontrol.PlayerDraw.SpindashBall", controlf.PlayerDraw.SpindashBall.Value),
+	generatelazytablefunc("pcontrol.PlayerDraw.init", controlf.PlayerDraw.init.Value))
 
 loadstring(code ..[==[
 	
