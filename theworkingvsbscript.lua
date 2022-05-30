@@ -5449,11 +5449,39 @@ end
 ---------------------------------------------------------------------
 
 -- GLOBALASSETS2 --
-local GLOBALASSETS2 = Instance.new("Folder", script.Parent)
-GLOBALASSETS2.Name = "Assets"
+-- globalassets2 is now merged with globalassets! yas!
+local GLOBALASSETS = Instance.new("Folder", script.Parent)
+GLOBALASSETS.Name = "Assets"
 ------------------
+-- add stuff from globalassets --
+Instance.new("Folder", GLOBALASSETS).Name = "Guis"
+Utils:Create({"ScreenGui", GLOBALASSETS.Guis}, {
+	Name = "HudGui",
+	Enabled = false
+}); local HudGui = GLOBALASSETS.Guis.HudGui
+
+Utils:Create({"Frame", HudGui}, {
+	Size = UDim2.new(1, 0, 1, 0),
+	BackgroundTransparency = 1,
+	Name = "Left"
+}); Utils:Create({"Frame", HudGui.Left}, {
+	Size = UDim2.new(.25, 0, .25, 0),
+	Name = "HudFrame",
+}); Utils:Create({"Frame", HudGui.Left.HudFrame}, {
+	Size = UDim2.new(1, 0, .25, 0),
+	Name = "LivesFrame",
+}); Utils:Create({"ImageLabel", HudGui.Left.HudFrame.LivesFrame}, {
+	Size = UDim2.new(.5, 0, .5, 0),
+	Position = UDim2.new(0, 0, 1, 0),
+	Name = "Portrait",
+}); Utils:Create({"ImageLabel", HudGui.Left.HudFrame}, {
+	Size = UDim2.new(.2, 0, .2, 0),
+	Position = UDim2.new(0, 0, 1-.2, 0),
+	Name = "RingIcon",
+})
+---------------------------------
 -- ADD GLOBAL SOUNDS --
-local gbsoundsig = Utils:Create({"Folder", GLOBALASSETS2}, { -- globalsoundsiguess
+local gbsoundsig = Utils:Create({"Folder", GLOBALASSETS}, { -- globalsoundsiguess
 	Name = "Sounds"
 })
 
@@ -5462,7 +5490,7 @@ Utils:NewSound(gbsoundsig, 1, 1, 1).Name = "Invincibility"
 Utils:NewSound(gbsoundsig, 1, 1, 1).Name = "ExtraLife"
 -----------------------
 -- ADD OBJECTS --
-local OBJECTS2 = Utils:Create({"Folder", GLOBALASSETS2}, {
+local OBJECTS2 = Utils:Create({"Folder", GLOBALASSETS}, {
 	Name = "Objects"
 }); Utils:Create({"Part", OBJECTS2}, {
 	Name = "SpilledRing"
