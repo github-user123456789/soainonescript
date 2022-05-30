@@ -5567,7 +5567,7 @@ commons.SpatialPartitioning = {}
 -- CONTROLSCRIPT
 
 local controlf = script.Parent.ControlScript
-code ..= string.format([[
+code = code .. string.format([[
 local pcontrol = {}
 %s
 %s
@@ -5576,7 +5576,7 @@ local pcontrol = {}
 	generatelazytablefunc("pcontrol.Music", controlf.Music.Value),
 	generatelazytablefunc("pcontrol.ObjectCommon", controlf.ObjectCommon.Value))
 
-code ..= string.format([[
+code = code .. string.format([[
 pcontrol.Hud = {}
 %s
 %s
@@ -5587,7 +5587,7 @@ pcontrol.Hud = {}
 	generatelazytablefunc("pcontrol.Hud.Text", controlf.Hud.Text.Value),
 	generatelazytablefunc("pcontrol.Hud.init", controlf.Hud.init.Value))
 
-code ..= string.format([[
+code = code .. string.format([[
 pcontrol.Object = {}
 %s
 %s
@@ -5612,7 +5612,7 @@ pcontrol.Object = {}
 	generatelazytablefunc("pcontrol.Object.Spring", controlf.Object.Spring.Value),
 	generatelazytablefunc("pcontrol.Object.init", controlf.Object.init.Value))
 
-code ..= string.format([[
+code = code .. string.format([[
 pcontrol.Player = {}
 %s
 %s
@@ -5635,7 +5635,7 @@ pcontrol.Player = {}
 	generatelazytablefunc("pcontrol.Player.Sound", controlf.Player.Sound.Value),
 	generatelazytablefunc("pcontrol.Player.init", controlf.Player.init.Value))
 
-code ..= string.format([[
+code = code .. string.format([[
 pcontrol.Player.Physics = {}
 %s
 %s
@@ -5644,7 +5644,7 @@ pcontrol.Player.Physics = {}
 	generatelazytablefunc("pcontrol.Player.Physics.SA2", controlf.Player.Physics.SA2.Value),
 	generatelazytablefunc("pcontrol.Player.Physics.SOA", controlf.Player.Physics.SOA.Value))
 
-code ..= string.format([[
+code = code .. string.format([[
 pcontrol.Player.Input = {}
 %s
 %s
@@ -5653,14 +5653,14 @@ pcontrol.Player.Input = {}
 	generatelazytablefunc("pcontrol.Player.Input.TouchThumbstick", controlf.Player.Input.TouchThumbstick.Value),
 	generatelazytablefunc("pcontrol.Player.Input.init", controlf.Player.Input.init.Value))
 
-code ..= string.format([[
+code = code .. string.format([[
 pcontrol.PlayerReplicate = {}
 %s
 %s
 ]], generatelazytablefunc("pcontrol.PlayerReplicate.Peer", controlf.PlayerReplicate.Peer.Value),
 	generatelazytablefunc("pcontrol.PlayerReplicate.init", controlf.PlayerReplicate.init.Value))
 
-code ..= string.format([[
+code = code .. string.format([[
 pcontrol.PlayerDraw = {}
 %s
 %s
