@@ -5521,7 +5521,7 @@ end
 ]]
 
 local function generatelazytablefunc(funcname, code)
-	print(funcname)
+	print(code)
 	local theactualcode = code
 	local code = funcname .." = "
 	code = code .. generatecodelazyfunc("", theactualcode)
