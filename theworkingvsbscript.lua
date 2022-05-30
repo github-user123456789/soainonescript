@@ -5573,7 +5573,6 @@ local pcontrol = {}
 	generatelazytablefunc("pcontrol.Music", controlf.Music.Value),
 	generatelazytablefunc("pcontrol.ObjectCommon", controlf.ObjectCommon.Value))
 
-print(controlf.Hud.init.Value)
 code = code .. string.format([[
 pcontrol.Hud = {}
 %s
