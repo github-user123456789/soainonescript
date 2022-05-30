@@ -5531,6 +5531,8 @@ local function generatelazytablefunc(funcname, code)
 	return code
 end
 
+-- COMMONS
+
 local commonf = script.Parent.CommonModules
 code = code .. string.format([[
 --local commonf = script.Parent.CommonModules
@@ -5562,7 +5564,23 @@ commons.SpatialPartitioning = {}
 ]], generatelazytablefunc("commons.SpatialPartitioning.Part", commonf.SpatialPartitioning.Part.Value),
 	generatelazytablefunc("commons.SpatialPartitioning.init", commonf.SpatialPartitioning.init.Value))
 
+-- CONTROLSCRIPT
+
+local controlf = script.Parent.ControlScript
+code ..= string.format([[
+local pcontrol = {}
+%s
+%s
+%s
+]], generatelazytablefunc("pcontrol.Constants", controlf.Constants.Value),
+	generatelazytablefunc("pcontrol.Music", controlf.Music.Value),
+	generatelazytablefunc("pcontrol.ObjectCommon", controlf.ObjectCommon.Value))
+
+-- TODO hud
+
 loadstring(code ..[==[
+	
+	print(commons.Vector)
 	
 	---------------------------------------------------
 	
