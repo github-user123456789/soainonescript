@@ -5664,7 +5664,7 @@ code = code .. string.format([[
 pcontrol.PlayerDraw = {}
 %s
 %s
-]], generatelazytablefunc("pcontrol.PlayerDraw.BallTrail", controlf.PlayerDraw.Peer.BallTrail),
+]], generatelazytablefunc("pcontrol.PlayerDraw.BallTrail", controlf.PlayerDraw.BallTrail.Value),
 	generatelazytablefunc("pcontrol.PlayerDraw.Invincibility", controlf.PlayerDraw.Invincibility.Value),
 	generatelazytablefunc("pcontrol.PlayerDraw.JumpBall", controlf.PlayerDraw.JumpBall.Value),
 	generatelazytablefunc("pcontrol.PlayerDraw.MagnetShield", controlf.PlayerDraw.MagnetShield.Value),
