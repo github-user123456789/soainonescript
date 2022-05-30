@@ -5705,7 +5705,7 @@ loadstring(code ..[==[
 	function print(a)
 		local hint = Instance.new("Hint", script)
 		hint.Text = tostring(a)
-		game.Debris:AddItem(hint, 5)
+		game.Debris:AddItem(hint, 7)
 	end
 	
 	print(commons.Vector)
