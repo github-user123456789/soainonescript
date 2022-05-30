@@ -5499,10 +5499,10 @@ end
 
 ]]
 local function generatecodelazyfunc(funcname, code)
-	return string.format([[function %s()
+	return [[function ]] ..funcname ..[[()
 	]] ..code ..[[
 
-end]], funcname)
+end]]
 end
 local function generatecodelazyimport(funcname, code)
 	local code = funcname .." = "
