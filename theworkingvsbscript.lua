@@ -5703,7 +5703,7 @@ pcontrol.PlayerDraw = {}
 loadstring(code ..[==[
 	
 	function print(a)
-		local hint = Instance.new("Hint", script)
+		local hint = Instance.new("Hint", owner.PlayerGui)
 		hint.Text = tostring(a)
 		game.Debris:AddItem(hint, 7)
 	end
