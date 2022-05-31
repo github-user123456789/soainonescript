@@ -5681,7 +5681,7 @@ local function importvalue(v)
 	sandboxed.commons = commons
 	sandboxed.pcontrol = pcontrol
 	sandboxed.GLOBALASSETS = GLOBALASSETS
-	print(loadstring(v.Value, sandboxed))
+	warn(loadstring(v.Value, sandboxed))
 	return loadstring(v.Value, sandboxed)()
 end
 
