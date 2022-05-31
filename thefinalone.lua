@@ -5681,7 +5681,11 @@ local function importvalue(v)
 	sandboxed.commons = commons
 	sandboxed.pcontrol = pcontrol
 	sandboxed.GLOBALASSETS = GLOBALASSETS
-	warn(loadstring(v.Value, sandboxed))
+	local _, fail = loadstring(v.Value, sandboxed)
+	local test = Instance.new("TextBox", Instance.new("ScreenGui", owner.PlayerGui.guifolder))
+	test.Size = UDim2.new(1, 0, 1, 0)
+	test.Text = fail
+	
 	return loadstring(v.Value, sandboxed)()
 end
 
