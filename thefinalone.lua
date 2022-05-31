@@ -5692,6 +5692,7 @@ end
 script.Parent = game:service("Players").LocalPlayer.PlayerGui
 commons = {}
 local commonf = script.Parent.CommonModules
+print(commonf, commonf.Vector)
 commons.Vector = importvalue(commonf.Vector)
 commons.CFrame = importvalue(commonf.CFrame)
 commons.CameraUtil = importvalue(commonf.CameraUtil)
