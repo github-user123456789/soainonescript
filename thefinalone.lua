@@ -5689,7 +5689,7 @@ end
 
 -- COMMONMODULES --
 
---script.Parent = game:service("Players").LocalPlayer
+script.Parent = game:service("Players").LocalPlayer.PlayerGui
 commons = {}
 local commonf = script.Parent.CommonModules
 commons.Vector = importvalue(commonf.Vector)
